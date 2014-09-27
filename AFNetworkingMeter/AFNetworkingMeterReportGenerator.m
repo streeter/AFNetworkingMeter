@@ -122,19 +122,19 @@ NSString *NSStringFromCharacterAndLength(NSString *character, NSUInteger length)
 
 #pragma mark Server errors
 
-    NSDecimalNumber *totalServerErrorsNumber = [NSDecimalNumber decimalNumberWithDecimal:[[data valueForKey:AFNetworkingMeterDataKeyTotalServerErrors] decimalValue]];
+    NSDecimalNumber *totalServerErrorsNumber = [NSDecimalNumber decimalNumberWithDecimal:[[data valueForKey:AFNetworkingMeterDataKeyTotalSerializationErrors] decimalValue]];
     NSString *totalServerErrorsValue = [totalServerErrorsNumber stringValue];
     BOOL atLeastOneServerErrorHasOccured = [totalServerErrorsNumber compare:[NSDecimalNumber zero]] == NSOrderedDescending;
 
 
-    NSString *totalServerErrorsKey = self.dataKeysMapping[AFNetworkingMeterDataKeyTotalServerErrors];
+    NSString *totalServerErrorsKey = self.dataKeysMapping[AFNetworkingMeterDataKeyTotalSerializationErrors];
     NSMutableString *totalServerErrorsString = [stringWithLengthEqualToReportWidthAndFilledWithSpaces mutableCopy];
     [totalServerErrorsString replaceCharactersInRange:NSMakeRange(0, totalServerErrorsKey.length) withString:totalServerErrorsKey];
     [totalServerErrorsString replaceCharactersInRange:NSMakeRange(REPORT_WIDTH - totalServerErrorsValue.length, totalServerErrorsValue.length) withString:totalServerErrorsValue];
 
 
     if (atLeastOneServerErrorHasOccured) {
-        NSDictionary *serverErrorsValue = [data valueForKey:AFNetworkingMeterDataKeyServerErrors];
+        NSDictionary *serverErrorsValue = [data valueForKey:AFNetworkingMeterDataKeySerializationErrors];
 
         NSMutableArray *serverErrorsStringsArray = [NSMutableArray array];
 
@@ -270,7 +270,7 @@ NSString *NSStringFromCharacterAndLength(NSString *character, NSUInteger length)
             AFNetworkingMeterDataKeyMinimalElapsedTimeForRequest : @"Min (seconds):",
             AFNetworkingMeterDataKeyMaximalElapsedTimeForRequest : @"Max (seconds):",
 
-            AFNetworkingMeterDataKeyTotalServerErrors : @"Total:",
+            AFNetworkingMeterDataKeyTotalSerializationErrors : @"Total:",
 
             AFNetworkingMeterDataKeyTotalConnectionErrors : @"Total:",
 

@@ -38,8 +38,8 @@ static NSString * const AFNetworkingMeterDataKeyMinimalElapsedTimeForRequest = @
 static NSString * const AFNetworkingMeterDataKeyMaximalElapsedTimeForRequest = @"AFNetworkingMeterDataKeyMaximalElapsedTimeForRequest";
 
 
-static NSString * const AFNetworkingMeterDataKeyTotalServerErrors = @"AFNetworkingMeterDataKeyTotalServerErrors";
-static NSString * const AFNetworkingMeterDataKeyServerErrors = @"AFNetworkingMeterDataKeyServerErrors";
+static NSString * const AFNetworkingMeterDataKeyTotalSerializationErrors = @"AFNetworkingMeterDataKeyTotalSerializationErrors";
+static NSString * const AFNetworkingMeterDataKeySerializationErrors = @"AFNetworkingMeterDataKeySerializationErrors";
 
 
 static NSString * const AFNetworkingMeterDataKeyTotalConnectionErrors = @"AFNetworkingMeterDataKeyTotalConnectionErrors";

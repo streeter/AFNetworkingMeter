@@ -59,15 +59,15 @@
 
     if (operation.error) {
         NSError *error = operation.error;
-        if ([error.domain isEqualToString:AFNetworkingErrorDomain]) {            
-            [self addNumberValue:@(1) forKey:AFNetworkingMeterDataKeyTotalServerErrors];
+        if ([error.domain isEqualToString:AFURLResponseSerializationErrorDomain]) {
+            [self addNumberValue:@(1) forKey:AFNetworkingMeterDataKeyTotalSerializationErrors];
 
             NSString *statusCode = [NSString stringWithFormat:@"%@", @(operation.response.statusCode)];
 
             NSString *reasonPhrase = AFNM_RFC2616_HTTPStatusCodesAndReasonPhrases()[@(operation.response.statusCode)];
             if (reasonPhrase) statusCode = [statusCode stringByAppendingFormat:@" %@", reasonPhrase];
 
-            [self incrementValueOfDictionaryKey:statusCode forKey:AFNetworkingMeterDataKeyServerErrors];
+            [self incrementValueOfDictionaryKey:statusCode forKey:AFNetworkingMeterDataKeySerializationErrors];
             
         } else if ([error.domain isEqualToString:NSURLErrorDomain]) {
             [self addNumberValue:@(1) forKey:AFNetworkingMeterDataKeyTotalConnectionErrors];
